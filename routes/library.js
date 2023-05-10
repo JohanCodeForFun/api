@@ -6,8 +6,8 @@ router.get('/all', async (req, res) => {
   await controller.get(req, res);
 });
 
-router.get('/search', async (req, res) => {
-  console.log(req.query);
+router.post('/search', async (req, res) => {
+  console.log(req.body);
   await controller.search(req, res);
 });
 

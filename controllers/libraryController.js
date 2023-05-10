@@ -8,7 +8,7 @@ async function get(req, res) {
 };
 
 async function search(req, res) {
-  let bookData = await getBookByKeyword(req.query.keyword);
+  let bookData = await getBookByKeyword(req.body.keyword);
 
   console.log(bookData);
 
