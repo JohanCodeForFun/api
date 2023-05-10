@@ -13,28 +13,46 @@ async function selectAllBooks() {
 }
 
 // insert one book to library
-async function insertBook(author, title, genre, published) {
+async function insertBook(author, title, genre, published, res) {
   const newBook = new bookModel(author, title, genre, published)
   console.log('new book: ', newBook)
 
-  await db.none(
-    "INSERT INTO library (author, title, genre, published)" +
-      "VALUES ($1, $2, $3, $4)",
-    [newBook.author, newBook.title, newBook.genre, newBook.published]
-  );
+  try {
+    await db.none(
+      "INSERT INTO library (author, title, genre, published)" +
+        "VALUES ($1, $2, $3, $4)",
+      [newBook.author, newBook.title, newBook.genre, newBook.published]
+    );
+
+    res.status(200).send('Book succesfully added.');
+  } catch (err) {
+    console.error(err)
+  }
 }
 
 // update one specific book
-async function updateBook(bookId, author, title, genre, published) {
-  await db.none(
-    "UPDATE library SET author = $2, title = $3, genre = $4, published = $5 WHERE book_id = $1",
-    [bookId, author, title, genre, published]
-  );
+async function updateBook(bookId, author, title, genre, published, res) {
+  try {
+    await db.none(
+      "UPDATE library SET author = $2, title = $3, genre = $4, published = $5 WHERE book_id = $1",
+      [bookId, author, title, genre, published]
+    );
+
+    res.status(200).send('Succesfully updated book.')
+  } catch (err) {
+    console.error(err)
+  }
 }
 
 // delete a book
-async function deleteBook(bookId) {
+async function deleteBook(bookId, res) {
+  try {
   await db.none("DELETE FROM library WHERE book_i = $1", [bookId]);
+    
+  res.status(200).send('Succesfully deleted book.')
+  } catch (err) {
+    console.error(err)
+  }
 }
 
 // search books
