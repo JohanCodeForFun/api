@@ -47,7 +47,7 @@ async function updateBook(bookId, author, title, genre, published, res) {
 // delete a book
 async function deleteBook(bookId, res) {
   try {
-  await db.none("DELETE FROM library WHERE book_i = $1", [bookId]);
+  await db.none("DELETE FROM library WHERE book_id = $1", [bookId]);
     
   res.status(200).send('Succesfully deleted book.')
   } catch (err) {
