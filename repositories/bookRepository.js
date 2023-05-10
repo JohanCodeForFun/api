@@ -28,8 +28,8 @@ async function getBookByKeyword(keyword) {
       new bookModel(
         book.author,
         book.title,
-        boook.genre,
-        boook.published
+        book.genre,
+        book.published
       )
     );
   });
