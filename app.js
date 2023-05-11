@@ -9,8 +9,8 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
 
-const libraryRouter = require('./routes/library')
-app.use('/library', libraryRouter)
+const catalogueRouter = require('./routes/catalogue')
+app.use('/catalogue', catalogueRouter)
 
 app.listen(port, () => {
   console.log(`API listening on port ${port}!`);
