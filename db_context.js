@@ -8,14 +8,12 @@ const bookModel = require('./models/bookModel')
 // get all books in catalogue
 async function selectAllBooks() {
   let bookData = await db.many("SELECT * FROM catalogue");
-  console.log(bookData)
   return bookData;
 }
 
 // insert one book to catalogue
 async function insertBook(author, title, genre, published, quantity, res) {
   const newBook = new bookModel(author, title, genre, published, quantity)
-  console.log('new book: ', newBook)
 
   try {
     await db.none(
