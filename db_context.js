@@ -34,7 +34,7 @@ async function insertBook(author, title, genre, published, quantity, res) {
 async function updateBook(bookId, author, title, genre, published, quantity, res) {
   try {
     await db.none(
-      "UPDATE catalogue SET author = $2, title = $3, genre = $4, published = $5, uantity = $6 WHERE book_id = $1",
+      "UPDATE catalogue SET author = $2, title = $3, genre = $4, published = $5, quantity = $6 WHERE book_id = $1",
       [bookId, author, title, genre, published, quantity]
     );
 
@@ -56,7 +56,14 @@ async function deleteBook(bookId, res) {
 }
 
 // search books
-async function selectBookByKeyword(keyword) {
+async function selectBookByAuthor(keyword) {
+  let bookData = await db.any(
+    `SELECT * FROM catalogue WHERE author LIKE '${keyword}%'`
+  );
+
+  return bookData;
+}
+async function selectBookByTitle(keyword) {
   let bookData = await db.any(
     `SELECT * FROM catalogue WHERE title LIKE '${keyword}%'`
   );
@@ -66,7 +73,8 @@ async function selectBookByKeyword(keyword) {
 
 module.exports = {
   selectAllBooks,
-  selectBookByKeyword,
+  selectBookByAuthor,
+  selectBookByTitle,
   insertBook,
   updateBook,
   deleteBook
