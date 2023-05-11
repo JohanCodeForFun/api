@@ -11,7 +11,8 @@ async function getAllBooks() {
         book.author,
         book.title,
         book.genre,
-        book.published
+        book.published,
+        book.quantity
       )
     );
   });
@@ -29,7 +30,8 @@ async function getBookByKeyword(keyword) {
         book.author,
         book.title,
         book.genre,
-        book.published
+        book.published,
+        book.quantity
       )
     );
   });
@@ -37,12 +39,12 @@ async function getBookByKeyword(keyword) {
   return books;
 }
 
-async function addBook(author, title, genre, published) {
-  db_context.insertBook(author, title, genre, published);
+async function addBook(author, title, genre, published, quantity) {
+  db_context.insertBook(author, title, genre, published, quantity);
 }
 
-async function editBook(bookId, author, title, genre, published) {
-  db_context.updateBook(bookId, author, title, genre, published);
+async function editBook(bookId, author, title, genre, published, quantity) {
+  db_context.updateBook(bookId, author, title, genre, published, quantity);
 }
 
 async function deleteBook(book_Id) {

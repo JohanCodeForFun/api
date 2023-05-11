@@ -18,13 +18,13 @@ async function search(req, res) {
 async function add(req, res) {
   console.log(req.body);
 
-  await addBook(req.body.author, req.body.title, req.body.genre, req.body.published);
+  await addBook(req.body.author, req.body.title, req.body.genre, req.body.published, req.body.quantity);
 
   res.sendStatus(200);
 };
 
 async function edit(req, res) {
-    await editBook(req.body.book_id, req.body.author, req.body.title, req.body.genre, req.body.published);
+    await editBook(req.body.book_id, req.body.author, req.body.title, req.body.genre, req.body.published,  req.body.quantity);
 
     res.sendStatus(200);
 };
