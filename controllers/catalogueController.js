@@ -1,5 +1,5 @@
 const book = require('../models/bookModel');
-const { getAllBooks, addBook, getBookByKeyword, editBook, deleteBook } = require('../repositories/bookRepository');
+const { getAllBooks, addBook, getBooksByKeyword, editBook, deleteBook } = require('../repositories/bookRepository');
 
 async function get(req, res) {
   let bookData = await getAllBooks();
@@ -8,7 +8,7 @@ async function get(req, res) {
 };
 
 async function search(req, res) {
-  let bookData = await getBookByKeyword(req.query.keyword);
+  let bookData = await getBooksByKeyword(req.query.keyword);
 
   console.log(bookData);
 

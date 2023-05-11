@@ -54,7 +54,7 @@ async function deleteBook(bookId, res) {
 }
 
 // search books
-async function selectBookByAuthor(keyword) {
+async function selectBooksByAuthor(keyword) {
   let bookData = await db.any(
     `SELECT * FROM catalogue WHERE author LIKE '${keyword}%'`
   );
@@ -71,7 +71,7 @@ async function selectBookByTitle(keyword) {
 
 module.exports = {
   selectAllBooks,
-  selectBookByAuthor,
+  selectBooksByAuthor,
   selectBookByTitle,
   insertBook,
   updateBook,
