@@ -13,6 +13,7 @@ async function getAllBooks() {
         book.genre,
         book.published,
         book.quantity,
+        book.loaned,
         book.book_id
       )
     );
@@ -21,9 +22,9 @@ async function getAllBooks() {
   return books;
 }
 
-async function getBookByKeyword(keyword) {
+async function getBooksByKeyword(keyword) {
   let books = [];
-  let bookData = await db_context.selectBookByKeyword(keyword);
+  let bookData = await db_context.selectBooksByAuthor(keyword);
 
   bookData.forEach((book) => {
     books.push(
@@ -55,7 +56,7 @@ async function deleteBook(book_Id) {
 
 module.exports = {
   getAllBooks,
-  getBookByKeyword,
+  getBooksByKeyword,
   addBook,
   editBook,
   deleteBook,
