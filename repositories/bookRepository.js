@@ -12,7 +12,8 @@ async function getAllBooks() {
         book.title,
         book.genre,
         book.published,
-        book.quantity
+        book.quantity,
+        book.book_id
       )
     );
   });
@@ -31,7 +32,8 @@ async function getBookByKeyword(keyword) {
         book.title,
         book.genre,
         book.published,
-        book.quantity
+        book.quantity,
+        book.book_id
       )
     );
   });
