@@ -37,7 +37,9 @@ INSERT INTO catalogue(
   title,
   genre,
   published) 
-  VALUES ('Robert Jordan', 'The Wheel of Time', 'Fantasy', '1999-01-08')
+  VALUES ('Azat Mardan', 'Express.js Guide', 'Technical Documentation', '2014-04-30')
+  VALUES ('The PostgreSQL Global Development Group', 'PostgreSQL 15.2 Documentation', 'Technical Documentation', '2023-03-22')
+  VALUES ('Bamse', 'Stark av honung', 'Honung', '1985-06-23')
 
 -- insert patron record
 INSERT INTO patron(
@@ -46,6 +48,8 @@ INSERT INTO patron(
 	email, 
 	created) 
   VALUES ('Johan', 'Hellberg', 'johan@jhellberg.com', current_timestamp);
+  VALUES ('Nalle', 'Puh', 'nalle@mail.com', current_timestamp);
+  VALUES ('Christopher', 'Robinson', 'chris@robinson.com', current_timestamp);
 
 -- insert loan record
 INSERT INTO loan(
